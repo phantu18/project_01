@@ -5,8 +5,8 @@ import { FaFacebook, FaGithub, FaLinkedin, FaYoutube } from "react-icons/fa6";
 
 const Footer = () => {
   return (
-    <div className="w-full bg-[#F5F5F3] pt-32">
-      <div className="max-w-container mx-auto grid grid-cols-1 md:grid-cols-2  xl:grid-cols-6 px-4 gap-10 ml-20 mr-20 ">
+    <div className="w-full bg-[#F5F5F3] p-8">
+      <div className="max-w-container mx-auto grid grid-cols-1 md:grid-cols-2  xl:grid-cols-6  gap-10 ml-20 mr-20 ">
         <div className="col-span-2">
           <h3 className="text-xl font-bodyFont font-semibold mb-6">PT Shop</h3>
           <div className="flex flex-col gap-6">

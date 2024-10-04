@@ -16,7 +16,13 @@ const UploadProduct = ({ onClose, fetchData }) => {
     productImage: [],
     description: "",
     price: "",
-    sellingPrice: "",
+    screen: "",
+    camera: "",
+    memory: "",
+    battery: "",
+    cpu: "",
+    graphic: "",
+    material: "",
   });
   const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
   const [fullScreenImage, setFullScreenImage] = useState("");
@@ -58,9 +64,6 @@ const UploadProduct = ({ onClose, fetchData }) => {
     });
   };
 
-  {
-    /**upload product */
-  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -107,11 +110,10 @@ const UploadProduct = ({ onClose, fetchData }) => {
           <input
             type="text"
             id="productName"
-            placeholder="enter product name"
             name="productName"
             value={data.productName}
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="p-2  border rounded"
             required
           />
           <label htmlFor="category" className="mt-3">
@@ -122,7 +124,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
             value={data.category}
             name="category"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="p-2  border rounded"
           >
             <option value={""}>Select Category</option>
             {productCategory.map((el, index) => {
@@ -138,7 +140,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
             Product Image :
           </label>
           <label htmlFor="uploadImageInput">
-            <div className="p-2 bg-slate-100 border rounded h-32 w-full flex justify-center items-center cursor-pointer">
+            <div className="p-2  border rounded h-32 w-full flex justify-center items-center cursor-pointer">
               <div className="text-slate-500 flex justify-center items-center flex-col gap-2">
                 <span className="text-4xl">
                   <FaCloudUploadAlt />
@@ -164,7 +166,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
                         alt={el}
                         width={80}
                         height={80}
-                        className="bg-slate-100 border cursor-pointer"
+                        className="border cursor-pointer"
                         onClick={() => {
                           setOpenFullScreenImage(true);
                           setFullScreenImage(el);
@@ -172,7 +174,7 @@ const UploadProduct = ({ onClose, fetchData }) => {
                       />
 
                       <div
-                        className="absolute bottom-0 right-0 p-1 text-white bg-red-600 rounded-full hidden group-hover:block cursor-pointer"
+                        className="absolute bottom-0 right-0 p-1 text-white bg-black rounded-full hidden group-hover:block cursor-pointer"
                         onClick={() => handleDeleteProductImage(index)}
                       >
                         <MdDelete />
@@ -194,24 +196,66 @@ const UploadProduct = ({ onClose, fetchData }) => {
           <input
             type="number"
             id="price"
-            placeholder="enter price"
             value={data.price}
             name="price"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="p-2 border rounded"
             required
           />
-          <label htmlFor="description" className="mt-3">
-            Description :
-          </label>
-          <textarea
-            className="h-28 bg-slate-100 border resize-none p-1"
-            placeholder="enter product description"
-            rows={3}
+          <label htmlFor="screen">Màn Hình :</label>
+          <input
+            type="text"
+            id="screen"
+            name="screen"
+            value={data.screen}
             onChange={handleOnChange}
-            name="description"
-            value={data.description}
-          ></textarea>
+            className="p-2  border rounded"
+          />
+          <label htmlFor="camera">Camera :</label>
+          <input
+            type="text"
+            id="camera"
+            name="camera"
+            value={data.camera}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="memory">Bộ nhớ :</label>
+          <input
+            type="text"
+            id="memory"
+            name="memory"
+            value={data.memory}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="battery">Pin :</label>
+          <input
+            type="text"
+            id="battery"
+            name="battery"
+            value={data.battery}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="cpu">Bộ xử lý :</label>
+          <input
+            type="text"
+            id="cpu"
+            name="cpu"
+            value={data.cpu}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="graphic">Đồ Họa :</label>
+          <input
+            type="text"
+            id="graphic"
+            name="graphic"
+            value={data.graphic}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
 
           <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
             Upload Product

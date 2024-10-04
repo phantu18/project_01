@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import SummaryApi from "../common";
 import Context from "../context";
-import displayINRCurrency from "../helpers/displayCurrency";
 import { MdDelete } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [data, setData] = useState([]);
@@ -103,7 +103,7 @@ const Cart = () => {
     0
   );
   const totalPrice = data.reduce(
-    (preve, curr) => preve + curr.quantity * curr?.productId?.sellingPrice,
+    (preve, curr) => preve + curr.quantity * curr?.productId?.price,
     0
   );
   return (
@@ -132,16 +132,16 @@ const Cart = () => {
                     key={product?._id + "Add To Cart Loading"}
                     className="w-full bg-white h-32 my-2 border border-slate-300  rounded grid grid-cols-[128px,1fr]"
                   >
-                    <div className="w-32 h-32 bg-slate-200">
+                    <div className="w-32 h-32 p-2">
                       <img
                         src={product?.productId?.productImage[0]}
-                        className="w-full h-full object-scale-down mix-blend-multiply"
+                        className="w-full h-full"
                       />
                     </div>
                     <div className="px-4 py-2 relative">
                       {/**delete product */}
                       <div
-                        className="absolute right-0 text-red-600 rounded-full p-2 hover:bg-red-600 hover:text-white cursor-pointer"
+                        className="absolute right-0  rounded-full p-2  text-primeColor hover:text-red-500 duration-300  cursor-pointer"
                         onClick={() => deleteCartProduct(product?._id)}
                       >
                         <MdDelete />
@@ -154,18 +154,13 @@ const Cart = () => {
                         {product?.productId.category}
                       </p>
                       <div className="flex items-center justify-between">
-                        <p className="text-red-600 font-medium text-lg">
-                          {displayINRCurrency(product?.productId?.sellingPrice)}
-                        </p>
-                        <p className="text-slate-600 font-semibold text-lg">
-                          {displayINRCurrency(
-                            product?.productId?.sellingPrice * product?.quantity
-                          )}
+                        <p className="text-lg font-semibold">
+                          ${product?.productId?.price}
                         </p>
                       </div>
-                      <div className="flex items-center gap-3 mt-1">
+                      <div className="flex items-center gap-6 text-lg">
                         <button
-                          className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                          className="w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300 "
                           onClick={() =>
                             decraseQty(product?._id, product?.quantity)
                           }
@@ -174,7 +169,7 @@ const Cart = () => {
                         </button>
                         <span>{product?.quantity}</span>
                         <button
-                          className="border border-red-600 text-red-600 hover:bg-red-600 hover:text-white w-6 h-6 flex justify-center items-center rounded "
+                          className="w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300 "
                           onClick={() =>
                             increaseQty(product?._id, product?.quantity)
                           }
@@ -189,25 +184,37 @@ const Cart = () => {
         </div>
 
         {/***summary  */}
-        <div className="mt-5 lg:mt-0 w-full max-w-sm">
+        <div className="max-w-7xl gap-4 flex justify-end mt-4">
           {loading ? (
             <div className="h-36 bg-slate-200 border border-slate-300 animate-pulse"></div>
           ) : (
-            <div className="h-36 bg-white">
-              <h2 className="text-white bg-red-600 px-4 py-1">Summary</h2>
-              <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                <p>Quantity</p>
-                <p>{totalQty}</p>
+            <div className="w-96 flex flex-col gap-4">
+              <h1 className="text-2xl font-semibold text-right">Cart totals</h1>
+              <div>
+                <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
+                  Quantity
+                  <span className="font-semibold tracking-wide font-titleFont">
+                    {totalQty}
+                  </span>
+                </p>
+                <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
+                  Shipping
+                  <span className="font-semibold tracking-wide font-titleFont">
+                    Miễn Phí
+                  </span>
+                </p>
+                <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
+                  Total
+                  <span className="font-bold tracking-wide text-lg font-titleFont">
+                    ${totalPrice}
+                  </span>
+                </p>
               </div>
-
-              <div className="flex items-center justify-between px-4 gap-2 font-medium text-lg text-slate-600">
-                <p>Total Price</p>
-                <p>{displayINRCurrency(totalPrice)}</p>
-              </div>
-
-              <button className="bg-blue-600 p-2 text-white w-full mt-2">
-                Payment
-              </button>
+              <Link to="/notfound" className="flex justify-end">
+                <button className="w-52 h-10 bg-black text-white  duration-300">
+                  Payment
+                </button>
+              </Link>
             </div>
           )}
         </div>

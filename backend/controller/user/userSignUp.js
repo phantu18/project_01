@@ -10,24 +10,24 @@ async function userSignUpController(req, res) {
     console.log("user", user);
 
     if (user) {
-      throw new Error("Already user exits.");
+      throw new Error("Người dùng đã tồn tại !!");
     }
 
     if (!email) {
-      throw new Error("Please provide email");
+      throw new Error("Vui Lòng nhập Email !!");
     }
     if (!password) {
-      throw new Error("Please provide password");
+      throw new Error("Vui Lòng nhập mật khẩu!!");
     }
     if (!name) {
-      throw new Error("Please provide name");
+      throw new Error("Vui Lòng nhập name!!");
     }
 
     const salt = bcrypt.genSaltSync(10);
     const hashPassword = await bcrypt.hashSync(password, salt);
 
     if (!hashPassword) {
-      throw new Error("Something is wrong");
+      throw new Error("Mật khẩu không khớp !!");
     }
 
     const payload = {
@@ -43,7 +43,7 @@ async function userSignUpController(req, res) {
       data: saveUser,
       success: true,
       error: false,
-      message: "User created Successfully!",
+      message: "Đăng kí thành công !",
     });
   } catch (err) {
     res.json({

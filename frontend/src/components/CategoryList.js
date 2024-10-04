@@ -39,7 +39,7 @@ const CategoryList = () => {
                   className="cursor-pointer"
                   key={product?.category}
                 >
-                  <div className="w-16 h-16 md:w-20 md:h-20  overflow-hidden bg flex items-center justify-center">
+                  <div className="w-20 h-20 md:w-20 md:h-20  overflow-hidden bg flex items-center justify-center">
                     <img
                       src={product?.productImage[0]}
                       alt={product?.category}

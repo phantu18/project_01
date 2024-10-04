@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import loginIcons from "../assest/user-circle-svgrepo-com.svg";
+import loginIcons from "../assest/signin.gif";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +7,7 @@ import imageTobase64 from "../helpers/imageTobase64";
 import SummaryApi from "../common";
 import { toast } from "react-toastify";
 import signUpBg from "../assest/pexels-erika-andrade-1358382831-28347063.jpg";
+
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
@@ -76,23 +77,7 @@ const SignUp = () => {
         <img src={signUpBg} className="w-full h-full object-cover" />
       </div>
       <div className="w-full md:w-1/2 h-auto md:h-full bg-[#f5f5f5] flex flex-col p-4 md:p-20 justify-between items-center">
-        <div className="w-20 h-20 mx-auto relative overflow-hidden rounded-full">
-          <div>
-            <img src={data.profilePic || loginIcons} alt="login icons" />
-          </div>
-          <form>
-            <label>
-              <div className="text-xs bg-opacity-80 bg-slate-200 pb-4 pt-2 cursor-pointer text-center absolute bottom-0 w-full">
-                Upload Photo
-              </div>
-              <input
-                type="file"
-                className="hidden"
-                onChange={handleUploadPic}
-              />
-            </label>
-          </form>
-        </div>
+        <h2 className="font-bold text-3xl text-center">Đăng Ký</h2>
 
         <form
           className="w-full flex flex-col max-w-[500px]"

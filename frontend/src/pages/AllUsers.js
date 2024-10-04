@@ -41,7 +41,7 @@ const AllUsers = () => {
       <table className="w-full userTable">
         <thead>
           <tr className="bg-black text-white">
-            <th>Sr.</th>
+            <th>STT</th>
             <th>Name</th>
             <th>Email</th>
             <th>Role</th>
@@ -60,7 +60,7 @@ const AllUsers = () => {
                 <td>{moment(el?.createdAt).format("LL")}</td>
                 <td>
                   <button
-                    className="bg-green-100 p-2 rounded-full cursor-pointer hover:bg-green-500 hover:text-white"
+                    className="bg-green-100 p-2 rounded-lg cursor-pointer hover:bg-green-500 hover:text-white"
                     onClick={() => {
                       setUpdateUserDetails(el);
                       setOpenUpdateRole(true);

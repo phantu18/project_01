@@ -15,9 +15,14 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
     brandName: productData?.brandName,
     category: productData?.category,
     productImage: productData?.productImage || [],
-    description: productData?.description,
     price: productData?.price,
-    sellingPrice: productData?.sellingPrice,
+    screen: productData?.screen,
+    camera: productData?.camera,
+    memory: productData?.memory,
+    battery: productData?.battery,
+    cpu: productData?.cpu,
+    graphic: productData?.graphic,
+    material: productData?.material,
   });
   const [openFullScreenImage, setOpenFullScreenImage] = useState(false);
   const [fullScreenImage, setFullScreenImage] = useState("");
@@ -59,9 +64,6 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
     });
   };
 
-  {
-    /**upload product */
-  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -108,28 +110,12 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
           <input
             type="text"
             id="productName"
-            placeholder="enter product name"
             name="productName"
             value={data.productName}
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="p-2  border rounded"
             required
           />
-
-          <label htmlFor="brandName" className="mt-3">
-            Brand Name :
-          </label>
-          <input
-            type="text"
-            id="brandName"
-            placeholder="enter brand name"
-            value={data.brandName}
-            name="brandName"
-            onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
-            required
-          />
-
           <label htmlFor="category" className="mt-3">
             Category :
           </label>
@@ -138,7 +124,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
             value={data.category}
             name="category"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="p-2  border rounded"
           >
             <option value={""}>Select Category</option>
             {productCategory.map((el, index) => {
@@ -154,7 +140,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
             Product Image :
           </label>
           <label htmlFor="uploadImageInput">
-            <div className="p-2 bg-slate-100 border rounded h-32 w-full flex justify-center items-center cursor-pointer">
+            <div className="p-2  border rounded h-32 w-full flex justify-center items-center cursor-pointer">
               <div className="text-slate-500 flex justify-center items-center flex-col gap-2">
                 <span className="text-4xl">
                   <FaCloudUploadAlt />
@@ -180,7 +166,7 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
                         alt={el}
                         width={80}
                         height={80}
-                        className="bg-slate-100 border cursor-pointer"
+                        className=" border cursor-pointer"
                         onClick={() => {
                           setOpenFullScreenImage(true);
                           setFullScreenImage(el);
@@ -210,39 +196,75 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
           <input
             type="number"
             id="price"
-            placeholder="enter price"
             value={data.price}
             name="price"
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
+            className="p-2  border rounded"
             required
           />
-
-          <label htmlFor="sellingPrice" className="mt-3">
-            Selling Price :
-          </label>
+          <label htmlFor="screen">Màn Hình :</label>
           <input
-            type="number"
-            id="sellingPrice"
-            placeholder="enter selling price"
-            value={data.sellingPrice}
-            name="sellingPrice"
+            type="text"
+            id="screen"
+            name="screen"
+            value={data.screen}
             onChange={handleOnChange}
-            className="p-2 bg-slate-100 border rounded"
-            required
+            className="p-2  border rounded"
           />
-
-          <label htmlFor="description" className="mt-3">
-            Description :
-          </label>
-          <textarea
-            className="h-28 bg-slate-100 border resize-none p-1"
-            placeholder="enter product description"
-            rows={3}
+          <label htmlFor="camera">Camera :</label>
+          <input
+            type="text"
+            id="camera"
+            name="camera"
+            value={data.camera}
             onChange={handleOnChange}
-            name="description"
-            value={data.description}
-          ></textarea>
+            className="p-2  border rounded"
+          />
+          <label htmlFor="memory">Bộ nhớ :</label>
+          <input
+            type="text"
+            id="memory"
+            name="memory"
+            value={data.memory}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="battery">Pin :</label>
+          <input
+            type="text"
+            id="battery"
+            name="battery"
+            value={data.battery}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="cpu">Bộ xử lý :</label>
+          <input
+            type="text"
+            id="cpu"
+            name="cpu"
+            value={data.cpu}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="graphic">Đồ Họa :</label>
+          <input
+            type="text"
+            id="graphic"
+            name="graphic"
+            value={data.graphic}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
+          <label htmlFor="material">Chất liệu :</label>
+          <input
+            type="text"
+            id="material"
+            name="material"
+            value={data.material}
+            onChange={handleOnChange}
+            className="p-2  border rounded"
+          />
 
           <button className="px-3 py-2 bg-red-600 text-white mb-10 hover:bg-red-700">
             Update Product
@@ -250,7 +272,6 @@ const AdminEditProduct = ({ onClose, productData, fetchdata }) => {
         </form>
       </div>
 
-      {/***display image full screen */}
       {openFullScreenImage && (
         <DisplayImage
           onClose={() => setOpenFullScreenImage(false)}

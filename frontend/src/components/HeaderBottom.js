@@ -60,7 +60,6 @@ const HeaderBottom = () => {
             onClick={() => setMenuDisplay((prev) => !prev)}
           >
             {user?.profilePic ? (
-              // Hiển thị hình ảnh và tên người dùng sau khi đăng nhập
               <>
                 <img
                   src={user?.profilePic}
@@ -70,7 +69,6 @@ const HeaderBottom = () => {
                 <span className="ml-2 text-lg font-medium">{user?.name}</span>
               </>
             ) : (
-              // Hiển thị icon FaUser khi chưa đăng nhập hoặc chưa có ảnh
               <FaRegUser />
             )}
           </div>

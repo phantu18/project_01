@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { MdModeEditOutline } from "react-icons/md";
 import AdminEditProduct from "./AdminEditProduct";
-import displayINRCurrency from "../helpers/displayCurrency";
 
 const AdminProductCard = ({ data, fetchdata }) => {
   const [editProduct, setEditProduct] = useState(false);
@@ -18,9 +17,7 @@ const AdminProductCard = ({ data, fetchdata }) => {
         <h1 className="text-ellipsis line-clamp-2">{data.productName}</h1>
 
         <div>
-          <p className="font-semibold">
-            {displayINRCurrency(data.sellingPrice)}
-          </p>
+          <p className="font-semibold">${data.price}</p>
 
           <div
             className="w-fit ml-auto p-2 bg-green-100 hover:bg-green-600 rounded-full hover:text-white cursor-pointer"

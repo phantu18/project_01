@@ -1,8 +1,6 @@
 import React, { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import SummaryApi from "../common";
-import displayINRCurrency from "../helpers/displayCurrency";
-import VerticalCardProduct from "../components/VerticalCardProduct";
 import CategroyWiseProductDisplay from "../components/CategoryWiseProductDisplay";
 import addToCart from "../helpers/addToCart";
 import Context from "../context";
@@ -15,6 +13,13 @@ const ProductDetails = () => {
     productImage: [],
     description: "",
     price: "",
+    screen: "",
+    camera: "",
+    memory: "",
+    battery: "",
+    cpu: "",
+    graphic: "",
+    material: "",
   });
   const params = useParams();
   const [loading, setLoading] = useState(true);
@@ -94,8 +99,7 @@ const ProductDetails = () => {
   return (
     <div className="container mx-auto p-4">
       <div className="min-h-[200px] flex flex-col lg:flex-row gap-4">
-        {/***product Image */}
-        <div className="h-96 flex flex-col lg:flex-row-reverse gap-4">
+        <div className="h-96 w-1/2 flex flex-col lg:flex-row-reverse gap-4">
           <div className="h-[300px] w-[300px] lg:h-96 lg:w-96 bg-[#fff] relative p-2">
             <img
               src={activeImage}
@@ -139,7 +143,6 @@ const ProductDetails = () => {
           </div>
         </div>
 
-        {/***product details */}
         {loading ? (
           <div className="grid gap-1 w-full">
             <p className="bg-slate-200 animate-pulse  h-6 lg:h-8 w-full rounded-full inline-block"></p>
@@ -164,39 +167,53 @@ const ProductDetails = () => {
             </div>
           </div>
         ) : (
-          <div className="flex flex-col gap-1">
-            <h2 className="text-2xl lg:text-4xl font-medium">
-              {data?.productName}
-            </h2>
-
-            <div className="items-center text-2xl lg:text-3xl font-medium my-1 ml-4">
-              <p className="text-[#373A40]">{data.price}$</p>
-            </div>
-
-            <div className="flex items-center gap-3 my-2">
-              <button
-                className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition duration-300"
-                onClick={(e) => handleBuyProduct(e, data?._id)}
-              >
-                Buy
-              </button>
-              <button
-                className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition duration-300"
-                onClick={(e) => handleAddToCart(e, data?._id)}
-              >
-                Add To Cart
-              </button>
-            </div>
-
+          <div className=" w-1/2 flex flex-col gap-1">
             <div>
-              <p className="text-slate-600 font-medium my-1">Description : </p>
-              <p>{data?.description}</p>
-              <ul className="mt-4 space-y-2">
-                <li className="text-gray-600">• 128GB Storage</li>
-                <li className="text-gray-600">• Space Gray</li>
-                <li className="text-gray-600">• 6.1" OLED Display</li>
-                <li className="text-gray-600">• A16 Bionic Chip</li>
-              </ul>
+              <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                {data?.productName}
+              </h2>
+              <p className="mt-4 text-xl">{data.price}$</p>
+              <div className="flex items-center gap-3 my-2">
+                <button
+                  className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition duration-300"
+                  onClick={(e) => handleBuyProduct(e, data?._id)}
+                >
+                  Buy
+                </button>
+                <button
+                  className="mt-6 bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition duration-300"
+                  onClick={(e) => handleAddToCart(e, data?._id)}
+                >
+                  Add To Cart
+                </button>
+              </div>
+
+              <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
+                <div className="border-t border-gray-200 pt-4">
+                  <dt className="font-medium text-gray-900">Màn Hình</dt>
+                  <dd className="mt-2 text-sm text-gray-500">{data.screen}</dd>
+                </div>
+                <div className="border-t border-gray-200 pt-4">
+                  <dt className="font-medium text-gray-900">Camera</dt>
+                  <dd className="mt-2 text-sm text-gray-500">{data.camera}</dd>
+                </div>
+                <div className="border-t border-gray-200 pt-4">
+                  <dt className="font-medium text-gray-900">Bộ Nhớ</dt>
+                  <dd className="mt-2 text-sm text-gray-500">{data.memory}</dd>
+                </div>
+                <div className="border-t border-gray-200 pt-4">
+                  <dt className="font-medium text-gray-900">Pin</dt>
+                  <dd className="mt-2 text-sm text-gray-500">{data.battery}</dd>
+                </div>
+                <div className="border-t border-gray-200 pt-4">
+                  <dt className="font-medium text-gray-900">CPU</dt>
+                  <dd className="mt-2 text-sm text-gray-500">{data.cpu}</dd>
+                </div>
+                <div className="border-t border-gray-200 pt-4">
+                  <dt className="font-medium text-gray-900">Đồ Họa</dt>
+                  <dd className="mt-2 text-sm text-gray-500">{data.graphic}</dd>
+                </div>
+              </dl>
             </div>
           </div>
         )}

@@ -67,10 +67,10 @@ const ChangeUserRole = ({ name, email, role, userId, onClose, callFunc }) => {
         </div>
 
         <button
-          className="w-fit mx-auto block  py-1 px-3 rounded-full bg-red-600 text-white hover:bg-red-700"
+          className="w-fit mx-auto block  py-1 px-3  bg-black text-white "
           onClick={updateUserRole}
         >
-          Change Role
+          Upload
         </button>
       </div>
     </div>

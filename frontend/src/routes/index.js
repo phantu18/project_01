@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
-import ForgotPassowrd from "../pages/ForgotPasswrd";
 import SignUp from "../pages/SignUp";
 import AdminPanel from "../pages/AdminPanel";
 import AllUsers from "../pages/AllUsers";
@@ -11,6 +10,10 @@ import CategoryProduct from "../pages/CategoryProduct";
 import ProductDetails from "../pages/ProductDetails";
 import Cart from "../pages/Cart";
 import SearchProduct from "../pages/SearchProduct";
+import Contact from "../pages/Contact";
+import NotFound from "../pages/NotPound";
+import AboutUs from "../pages/AboutUs";
+import Blog from "../pages/Blog";
 
 const router = createBrowserRouter([
   {
@@ -24,10 +27,6 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: <Login />,
-      },
-      {
-        path: "forgot-password",
-        element: <ForgotPassowrd />,
       },
       {
         path: "sign-up",
@@ -48,6 +47,26 @@ const router = createBrowserRouter([
       {
         path: "search",
         element: <SearchProduct />,
+      },
+      {
+        path: "contact",
+        element: <Contact />,
+      },
+      {
+        path: "notfound",
+        element: <NotFound />,
+      },
+      {
+        path: "aboutus",
+        element: <AboutUs />,
+      },
+      {
+        path: "blog",
+        element: <Blog />,
+      },
+      {
+        path: "notfound",
+        element: <NotFound />,
       },
       {
         path: "admin-panel",

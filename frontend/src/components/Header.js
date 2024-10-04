@@ -13,23 +13,18 @@ const Header = () => {
     },
     {
       _id: 2,
-      title: "Shop",
-      link: "/shop",
+      title: "About",
+      link: "/aboutus",
     },
     {
       _id: 3,
-      title: "About",
-      link: "/about",
-    },
-    {
-      _id: 4,
       title: "Contact",
       link: "/contact",
     },
     {
-      _id: 5,
-      title: "Journal",
-      link: "/journal",
+      _id: 4,
+      title: "Blog",
+      link: "/blog",
     },
   ];
   const [showMenu, setShowMenu] = useState(true);
@@ -60,7 +55,7 @@ const Header = () => {
                 <>
                   {navBarList.map(({ _id, title, link }) => (
                     <NavLink
-                      exact={link === ""} // Thêm thuộc tính exact cho Home
+                      exact={link === ""}
                       key={_id}
                       className={({ isActive }) =>
                         `flex font-bold w-20 h-6 justify-center items-center px-12 text-base text-[#767676] hover:underline underline-offset-[4px] decoration-[1px] hover:text-[#262626] md:border-r-[2px] border-r-gray-300 hoverEffect last:border-r-0 ${

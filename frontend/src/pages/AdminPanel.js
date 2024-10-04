@@ -33,14 +33,19 @@ const AdminPanel = () => {
           <p className="text-sm">{user?.role}</p>
         </div>
 
-        {/* **navigation */}
         <div>
           <nav className="grid p-4">
-            <Link to={"all-users"} className="px-2 py-1 hover:bg-slate-100">
+            <Link
+              to={"all-users"}
+              className="px-2 py-1 hover:bg-black hover:text-white "
+            >
               All Users
             </Link>
-            <Link to={"all-products"} className="px-2 py-1 hover:bg-slate-100">
-              All product
+            <Link
+              to={"all-products"}
+              className="px-2 py-1 hover:bg-black hover:text-white "
+            >
+              All Product
             </Link>
           </nav>
         </div>
